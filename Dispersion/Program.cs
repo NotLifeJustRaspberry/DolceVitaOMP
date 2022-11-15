@@ -25,6 +25,26 @@ class Dispersion
                     .ToArray())
                 .ToArray();
     }
+
+    static List<Data> Solve(long[][] dataAll)
+    {
+        List<Data> datas = new();
+        for (int i = 0; i < dataAll.Length; i++)
+            datas.Add(new Data());
+
+        for (int i = 0; i < dataAll.Length; i++)
+        {
+            foreach (long item in dataAll[i])
+            {
+                datas[i].M += item;
+                datas[i].D += item * item;
+            }
+            datas[i].M /= dataAll[i].Length;
+            datas[i].D = datas[i].D / dataAll[i].Length - datas[i].M * datas[i].M;
+        }
+        return datas;
+    }
+
     static void Main(string[] args)
     {
 
