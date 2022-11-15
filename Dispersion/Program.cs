@@ -16,6 +16,10 @@ class Dispersion
     {
         return File.ReadAllLines(path);
     }
+    static void PrintFile(List<Data> datas, string path, string separator = ";")
+    {
+        File.WriteAllLines(path, datas.Select(data => data.M + separator + data.D));
+    }
     static long[][] SplitText(string[] text)
     {
         return text
