@@ -4,6 +4,8 @@
 // Для распараллеливания использовать OpenMP, использовать весь ресурс параллелизма (параллелить, где можно) и оптимизации компилятора.
 // Построить график зависимости ускорения по сравнению с 1 потоком и сравнить с линейным ускорением.
 
+using System.Diagnostics;
+
 class Data
 {
     public ulong M { get; set; } = 0;
@@ -54,9 +56,15 @@ class Dispersion
     {
         string path = Directory.GetCurrentDirectory();
 
+        Stopwatch stopwatch = new();
+        stopwatch.Start();
+
         string[] datas = ReadFile(path + "\\minmax.txt");
         ulong[][] splitDatas = SplitText(datas);
         List<Data> solution = Solve(splitDatas);
         PrintFile(solution, path + "\\out.csv");
+
+        stopwatch.Stop();
+        Console.WriteLine(stopwatch.ElapsedMilliseconds);
     }
 }
