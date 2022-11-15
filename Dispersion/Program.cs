@@ -6,6 +6,10 @@
 
 class Dispersion
 {
+    static string[] ReadFile(string path)
+    {
+        return File.ReadAllLines(path);
+    }
     static void Main(string[] args)
     {
 
