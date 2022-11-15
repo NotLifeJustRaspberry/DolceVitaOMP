@@ -10,6 +10,15 @@ class Dispersion
     {
         return File.ReadAllLines(path);
     }
+    static long[][] SplitText(string[] text)
+    {
+        return text
+                .Select(str => str.Split(' ')
+                    .Where(str => str.Length > 0)
+                        .Select(str => long.Parse(str))
+                    .ToArray())
+                .ToArray();
+    }
     static void Main(string[] args)
     {
 
