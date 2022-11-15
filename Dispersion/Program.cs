@@ -25,8 +25,8 @@ class Dispersion
     public static ulong[][] SplitText(string[] text)
     {
         return text
+                .AsParallel()
                 .Select(str => str.Split(' ')
-                    .AsParallel()
                     .Where(str => str.Length > 0)
                         .Select(str => ulong.Parse(str))
                     .ToArray())
