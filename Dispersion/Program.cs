@@ -6,8 +6,8 @@
 
 class Data
 {
-    public long M { get; set; } = 0;
-    public long D { get; set; } = 0;
+    public ulong M { get; set; } = 0;
+    public ulong D { get; set; } = 0;
 }
 
 class Dispersion
@@ -20,17 +20,17 @@ class Dispersion
     {
         File.WriteAllLines(path, datas.Select(data => data.M + separator + data.D));
     }
-    public static long[][] SplitText(string[] text)
+    public static ulong[][] SplitText(string[] text)
     {
         return text
                 .Select(str => str.Split(' ')
                     .Where(str => str.Length > 0)
-                        .Select(str => long.Parse(str))
+                        .Select(str => ulong.Parse(str))
                     .ToArray())
                 .ToArray();
     }
 
-    public static List<Data> Solve(long[][] dataAll)
+    public static List<Data> Solve(ulong[][] dataAll)
     {
         List<Data> datas = new();
         for (int i = 0; i < dataAll.Length; i++)
@@ -38,13 +38,13 @@ class Dispersion
 
         for (int i = 0; i < dataAll.Length; i++)
         {
-            foreach (long item in dataAll[i])
+            foreach (ulong item in dataAll[i])
             {
                 datas[i].M += item;
                 datas[i].D += item * item;
             }
-            datas[i].M /= dataAll[i].Length;
-            datas[i].D = datas[i].D / dataAll[i].Length - datas[i].M * datas[i].M;
+            datas[i].M /= (ulong)dataAll[i].Length;
+            datas[i].D = datas[i].D / (ulong)dataAll[i].Length - datas[i].M * datas[i].M;
         }
         return datas;
     }
@@ -54,7 +54,7 @@ class Dispersion
         string path = Directory.GetCurrentDirectory();
 
         string[] datas = ReadFile(path + "\\minmax.txt");
-        long[][] splitDatas = SplitText(datas);
+        ulong[][] splitDatas = SplitText(datas);
         List<Data> solution = Solve(splitDatas);
         PrintFile(solution, path + "\\out.csv");
     }
