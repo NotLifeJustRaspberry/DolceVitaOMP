@@ -37,7 +37,7 @@ class Dispersion
         for (int i = 0; i < dataAll.Length; i++)
             datas.Add(new Data());
 
-        for (int i = 0; i < dataAll.Length; i++)
+        Parallel.For(0, dataAll.Length, i =>
         {
             foreach (ulong item in dataAll[i])
             {
@@ -46,7 +46,7 @@ class Dispersion
             }
             datas[i].M /= (ulong)dataAll[i].Length;
             datas[i].D = datas[i].D / (ulong)dataAll[i].Length - datas[i].M * datas[i].M;
-        }
+        });
         return datas;
     }
 
