@@ -12,15 +12,15 @@ class Data
 
 class Dispersion
 {
-    static string[] ReadFile(string path)
+    public static string[] ReadFile(string path)
     {
         return File.ReadAllLines(path);
     }
-    static void PrintFile(List<Data> datas, string path, string separator = ";")
+    public static void PrintFile(List<Data> datas, string path, string separator = ";")
     {
         File.WriteAllLines(path, datas.Select(data => data.M + separator + data.D));
     }
-    static long[][] SplitText(string[] text)
+    public static long[][] SplitText(string[] text)
     {
         return text
                 .Select(str => str.Split(' ')
@@ -30,7 +30,7 @@ class Dispersion
                 .ToArray();
     }
 
-    static List<Data> Solve(long[][] dataAll)
+    public static List<Data> Solve(long[][] dataAll)
     {
         List<Data> datas = new();
         for (int i = 0; i < dataAll.Length; i++)
