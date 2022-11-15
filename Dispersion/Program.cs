@@ -24,6 +24,7 @@ class Dispersion
     {
         return text
                 .Select(str => str.Split(' ')
+                    .AsParallel()
                     .Where(str => str.Length > 0)
                         .Select(str => ulong.Parse(str))
                     .ToArray())
