@@ -51,6 +51,11 @@ class Dispersion
 
     static void Main(string[] args)
     {
+        string path = Directory.GetCurrentDirectory();
 
+        string[] datas = ReadFile(path + "\\minmax.txt");
+        long[][] splitDatas = SplitText(datas);
+        List<Data> solution = Solve(splitDatas);
+        PrintFile(solution, path + "\\out.csv");
     }
 }
