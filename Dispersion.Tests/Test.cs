@@ -78,5 +78,31 @@ namespace Dispersion.Tests
                 for (int j = 0; j < expected[0].Length; j++)
                     Assert.AreEqual(expected[i][j], actual[i][j]);
         }
+
+        [TestMethod]
+        public void TestSolve()
+        {
+            List<Data> expected = new()
+            {
+                new Data(),
+                new Data()
+            };
+            expected[0].M = 57;
+            expected[0].D = 1504;
+            expected[1].M = 389;
+            expected[1].D = 123924;
+            ulong[][] data = new ulong[2][]
+            {
+                new ulong[] { 105, 10, 56 },
+                new ulong[] { 56, 235, 876 }
+            };
+            List<Data> actual = Dispersion.Solve(data);
+
+            for (int j = 0; j < expected.Count; j++)
+            {
+                Assert.AreEqual(expected[j].M, actual[j].M);
+                Assert.AreEqual(expected[j].D, actual[j].D);
+            }
+        }
     }
 }
