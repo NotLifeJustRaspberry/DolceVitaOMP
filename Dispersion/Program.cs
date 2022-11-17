@@ -18,7 +18,7 @@ public class Dispersion
 {
     public static string[] ReadFile(string path)
     {
-        return File.ReadAllLines(path);
+        return File.Exists(path) ? File.ReadAllLines(path) : Array.Empty<string>();
     }
     public static void PrintFile(List<Data> datas, string path, string separator = ";")
     {
