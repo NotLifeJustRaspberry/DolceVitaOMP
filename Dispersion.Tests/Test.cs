@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text;
 
 namespace Dispersion.Tests
@@ -103,6 +104,28 @@ namespace Dispersion.Tests
                 Assert.AreEqual(expected[j].M, actual[j].M);
                 Assert.AreEqual(expected[j].D, actual[j].D);
             }
+        }
+
+        [TestMethod]
+        public void TestPrintFile()
+        {
+            string[] expected = new string[] { "57 1504", "389 123924" };
+            string path = "test.cvc";
+            List<Data> datas = new()
+            {
+                new Data(),
+                new Data()
+            };
+            datas[0].M = 57;
+            datas[0].D = 1504;
+            datas[1].M = 389;
+            datas[1].D = 123924;
+
+            Dispersion.PrintFile(datas, path, " ");
+            var actual = File.ReadAllLines(path);
+
+            for (int j = 0; j < datas.Count; j++)
+                Assert.AreEqual(expected[j], actual[j]);
         }
     }
 }
