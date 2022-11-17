@@ -12,6 +12,12 @@ public class Data
 {
     public ulong M { get; set; } = 0;
     public ulong D { get; set; } = 0;
+    public Data() { }
+    public Data(ulong m, ulong d)
+    {
+        M = m;
+        D = d;
+    }
 }
 
 public class Dispersion
