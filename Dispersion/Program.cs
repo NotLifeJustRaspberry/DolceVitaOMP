@@ -6,13 +6,13 @@
 
 using System.Diagnostics;
 
-class Data
+public class Data
 {
     public ulong M { get; set; } = 0;
     public ulong D { get; set; } = 0;
 }
 
-class Dispersion
+public class Dispersion
 {
     public static string[] ReadFile(string path)
     {
