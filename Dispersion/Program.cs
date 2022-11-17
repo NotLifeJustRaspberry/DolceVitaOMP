@@ -6,6 +6,8 @@
 
 using System.Diagnostics;
 
+namespace Dispersion;
+
 public class Data
 {
     public ulong M { get; set; } = 0;
