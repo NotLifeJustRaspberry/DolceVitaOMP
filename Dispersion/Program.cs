@@ -36,10 +36,10 @@ public class Dispersion
                 .AsParallel()
                 .Select(str => str.Split(' ')
                     .Where(str => str.Length > 0)
-                        .Select(str => ulong.Parse(str))
+                        .Select(str => { ulong.TryParse("", out ulong num); return num; })
                     .ToArray())
                 .ToArray();
-    }
+    }   
 
     public static List<Data> Solve(ulong[][] dataAll)
     {
