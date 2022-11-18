@@ -39,7 +39,7 @@ public class Dispersion
                         .Select(str => { ulong.TryParse(str, out ulong num); return num; })
                     .ToArray())
                 .ToArray();
-    }   
+    }
 
     public static List<Data> Solve(ulong[][] dataAll)
     {

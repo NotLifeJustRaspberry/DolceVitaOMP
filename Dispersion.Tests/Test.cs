@@ -1,7 +1,3 @@
-using System;
-using System.IO;
-using System.Text;
-
 namespace Dispersion.Tests
 {
     [TestClass]
@@ -112,7 +108,6 @@ namespace Dispersion.Tests
                 new Data(389, 123924),
                 new Data(315964, 236788857302),
                 new Data(216, 46656)
-
             };
             ulong[][] data = new ulong[4][]
             {
@@ -120,7 +115,6 @@ namespace Dispersion.Tests
                 new ulong[] { 56, 235, 876 },
                 new ulong[] { 10543, 34562, 6256, 45345, 1345627, 453453 },
                 new ulong[] { 432, 1 }
-
             };
 
             List<Data> actual = Dispersion.Solve(data);
@@ -135,8 +129,14 @@ namespace Dispersion.Tests
         [TestMethod]
         public void TestPrintFileSpace()
         {
-            string[] expected = new string[] { "57 1504", "389 123924", "315964 236788857302", "216 46656" };
             string path = "test.cvc";
+            string[] expected = new string[]
+            {
+                "57 1504",
+                "389 123924",
+                "315964 236788857302",
+                "216 46656"
+            };
             List<Data> datas = new()
             {
                 new Data(57, 1504),
@@ -155,8 +155,14 @@ namespace Dispersion.Tests
         [TestMethod]
         public void TestPrintFileSemicolon()
         {
-            string[] expected = new string[] { "57;1504", "389;123924", "315964;236788857302", "216;46656" };
             string path = "test.cvc";
+            string[] expected = new string[]
+            {
+                "57;1504",
+                "389;123924",
+                "315964;236788857302",
+                "216;46656"
+            };
             List<Data> datas = new()
             {
                 new Data(57, 1504),
