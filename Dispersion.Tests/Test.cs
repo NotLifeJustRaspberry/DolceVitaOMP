@@ -128,5 +128,25 @@ namespace Dispersion.Tests
             for (int j = 0; j < datas.Count; j++)
                 Assert.AreEqual(expected[j], actual[j]);
         }
+
+        [TestMethod]
+        public void TestPrintFileSemicolon()
+        {
+            string[] expected = new string[] { "57;1504", "389;123924", "315964;236788857302", "216;46656" };
+            string path = "test.cvc";
+            List<Data> datas = new()
+            {
+                new Data(57, 1504),
+                new Data(389, 123924),
+                new Data(315964, 236788857302),
+                new Data(216, 46656)
+            };
+
+            Dispersion.PrintFile(datas, path, ";");
+            var actual = File.ReadAllLines(path);
+
+            for (int j = 0; j < datas.Count; j++)
+                Assert.AreEqual(expected[j], actual[j]);
+        }
     }
 }
