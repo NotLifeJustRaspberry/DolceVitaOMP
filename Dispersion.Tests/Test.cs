@@ -85,18 +85,21 @@ namespace Dispersion.Tests
         {
             List<Data> expected = new()
             {
-                new Data(),
-                new Data()
+                new Data(57, 1504),
+                new Data(389, 123924),
+                new Data(315964, 236788857302),
+                new Data(216, 46656)
+
             };
-            expected[0].M = 57;
-            expected[0].D = 1504;
-            expected[1].M = 389;
-            expected[1].D = 123924;
-            ulong[][] data = new ulong[2][]
+            ulong[][] data = new ulong[4][]
             {
                 new ulong[] { 105, 10, 56 },
-                new ulong[] { 56, 235, 876 }
+                new ulong[] { 56, 235, 876 },
+                new ulong[] { 10543, 34562, 6256, 45345, 1345627, 453453 },
+                new ulong[] { 432, 1 }
+
             };
+
             List<Data> actual = Dispersion.Solve(data);
 
             for (int j = 0; j < expected.Count; j++)
