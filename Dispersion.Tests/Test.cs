@@ -81,7 +81,28 @@ namespace Dispersion.Tests
                 for (int j = 0; j < expected[i].Length; j++)
                     Assert.AreEqual(expected[i][j], actual[i][j]);
         }
+        [TestMethod]
+        public void TestSplitTextChar()
+        {
+            ulong[][] expected = new ulong[3][]
+            {
+                new ulong[] { 0, 10, 56 },
+                new ulong[] { 56, 0 },
+                new ulong[] { 234, 675, 234 },
+            };
+            string[] data = new string[]
+            {
+                "ye 10 56",
+                "56 s",
+                "234 675 234",
+            };
 
+            ulong[][] actual = Dispersion.SplitText(data);
+
+            for (int i = 0; i < expected.Length; i++)
+                for (int j = 0; j < expected[i].Length; j++)
+                    Assert.AreEqual(expected[i][j], actual[i][j]);
+        }
         [TestMethod]
         public void TestSolve()
         {
