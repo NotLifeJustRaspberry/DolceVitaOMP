@@ -110,19 +110,17 @@ namespace Dispersion.Tests
         }
 
         [TestMethod]
-        public void TestPrintFile()
+        public void TestPrintFileSpace()
         {
-            string[] expected = new string[] { "57 1504", "389 123924" };
+            string[] expected = new string[] { "57 1504", "389 123924", "315964 236788857302", "216 46656" };
             string path = "test.cvc";
             List<Data> datas = new()
             {
-                new Data(),
-                new Data()
+                new Data(57, 1504),
+                new Data(389, 123924),
+                new Data(315964, 236788857302),
+                new Data(216, 46656)
             };
-            datas[0].M = 57;
-            datas[0].D = 1504;
-            datas[1].M = 389;
-            datas[1].D = 123924;
 
             Dispersion.PrintFile(datas, path, " ");
             var actual = File.ReadAllLines(path);
