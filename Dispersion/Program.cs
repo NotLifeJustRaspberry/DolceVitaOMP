@@ -6,17 +6,25 @@
 
 using System.Diagnostics;
 
-class Data
+namespace Dispersion;
+
+public class Data
 {
     public ulong M { get; set; } = 0;
     public ulong D { get; set; } = 0;
+    public Data() { }
+    public Data(ulong m, ulong d)
+    {
+        M = m;
+        D = d;
+    }
 }
 
-class Dispersion
+public class Dispersion
 {
     public static string[] ReadFile(string path)
     {
-        return File.ReadAllLines(path);
+        return File.Exists(path) ? File.ReadAllLines(path) : Array.Empty<string>();
     }
     public static void PrintFile(List<Data> datas, string path, string separator = ";")
     {
@@ -28,7 +36,7 @@ class Dispersion
                 .AsParallel()
                 .Select(str => str.Split(' ')
                     .Where(str => str.Length > 0)
-                        .Select(str => ulong.Parse(str))
+                        .Select(str => { ulong.TryParse(str, out ulong num); return num; })
                     .ToArray())
                 .ToArray();
     }
