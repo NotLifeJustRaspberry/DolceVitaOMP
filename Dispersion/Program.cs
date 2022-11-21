@@ -65,14 +65,20 @@ public class Dispersion
         string path = Directory.GetCurrentDirectory();
 
         Stopwatch stopwatch = new();
-        stopwatch.Start();
+        
 
         string[] datas = ReadFile(path + "\\minmax.txt");
+
+        stopwatch.Start();
         ulong[][] splitDatas = SplitText(datas);
         List<Data> solution = Solve(splitDatas);
+        stopwatch.Stop();
+
         PrintFile(solution, path + "\\out.csv");
 
-        stopwatch.Stop();
+       
         Console.WriteLine(stopwatch.ElapsedMilliseconds);
     }
 }
+
+//test commit
